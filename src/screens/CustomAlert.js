@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     right: 0,
   },
   alert: {
-    backgroundColor: '#F19A34',
+    backgroundColor: '#FFC7B0',
     borderRadius: 50,
     padding: 50,
     alignItems: 'center',
@@ -45,6 +45,7 @@ const styles = StyleSheet.create({
     width: 80,
     height: 80,
     marginBottom: 10,
+    resizeMode:'center'
   },
   title: {
     fontSize: 20,

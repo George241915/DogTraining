@@ -8,7 +8,7 @@ import styles from '../styles/stylesNavegacion';
 
 
 //import camicon
-import cam from '../assets/logEC.png'
+import cam from '../assets/IconDog2.png'
 import Bienvenido from '../screens/Bienvenido';
 import Recomendaciones from '../screens/Recomendaciones';
 import Model from '../screens/model';
@@ -20,7 +20,7 @@ export default function Navigation(props) {
  
   return (
       <Tab.Navigator initialRouteName='Inicio' screenOptions={({ route }) => ({
-      tabBarActiveTintColor: '#efb810',
+      tabBarActiveTintColor: '#89FF7D',
       tabBarInactiveTintColor: 'black',
       tabBarStyle: [styles.tabnav],
       tabBarIcon: ({ color }) => screenOptions(route, color),
@@ -37,14 +37,14 @@ export default function Navigation(props) {
             labelicon = focused ? 'Recomendaciones' : '';
             break; 
         } 
-        return <Text style={{color:'purple'}}>{labelicon}</Text>
+        return <Text style={{color:'#0123E1'}}>{labelicon}</Text>
       }
     })}>
       <Tab.Screen name='Inicio' component={Bienvenido}
         options={{
           tabBarIcon: ({ focused }) => (
             <View style={styles.tabvaricon}>
-              <FontAwesome5 name="home" size={20} color={focused ? 'purple' : 'gray'}>
+              <FontAwesome5 name="home" size={20} color={focused ? '#0123E1' : 'gray'}>
               </FontAwesome5>
             </View>),
             headerShown: false,
@@ -54,7 +54,7 @@ export default function Navigation(props) {
         options={{
           tabBarIcon: ({ focused }) => (
             <View style={styles.tabvaricon}>
-              <FontAwesome5 name="home" size={20} color={focused ? 'purple' : 'gray'}>
+              <FontAwesome5 name="home" size={20} color={focused ? '#0123E1' : 'gray'}>
               </FontAwesome5>
             </View>),
             headerShown: false,
@@ -81,7 +81,7 @@ export default function Navigation(props) {
 
           tabBarIcon: ({ focused }) => (
             <View style={styles.tabvaricon}>
-              <FontAwesome5 name="brain" size={20} color={focused ? 'purple' : 'gray'}>
+              <FontAwesome5 name="paw" size={20} color={focused ? '#0123E1' : 'gray'}>
               </FontAwesome5>
             </View>),
           headerShown: false,      

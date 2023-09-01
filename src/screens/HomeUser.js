@@ -13,10 +13,10 @@ export default function HomeUser() {
   const user = {
     avatar: '',
     coverPhoto:"https://images.unsplash.com/photo-1605548109944-9040d0972bf5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
-    name: "Avicola Estefania",
-    correo: "avicola@gmail.com",
+    name: "Jorge Erazo",
+    correo: "jderazog@uce.edu.ec",
     phone: "0987652419",
-    Dirección: "Mulalo",
+    Dirección: "Latacunga",
     Ciudad: "Latacunga"
 }
 
@@ -35,11 +35,11 @@ export default function HomeUser() {
               {user.correo}
             </Text>
             <View style={styles.buttonContainer}>
-              <Text style={{color:'#F19A34'}} onPress={()=>Linking.openURL("https:www.facebook.com")}
+              <Text style={{color:'#3F7DF2'}} onPress={()=>Linking.openURL("https:www.facebook.com")}
               >{facebook}</Text>
-              <Text style={{color:'#F19A34'}} onPress={()=>Linking.openURL("https:www.instagram.com")}
+              <Text style={{color:'#E1306C'}} onPress={()=>Linking.openURL("https:www.instagram.com")}
               >{instagram}</Text>
-              <Text style={{color:'#F19A34'}} onPress={()=>Linking.openURL("https:www.linkedin.com")}
+              <Text style={{color:'#0e76a8'}} onPress={()=>Linking.openURL("https:www.linkedin.com")}
               >{linkedin}</Text>
             </View>
           </View> 

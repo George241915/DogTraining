@@ -6,7 +6,7 @@ import {getAuth,signInWithEmailAndPassword, createUserWithEmailAndPassword} from
 import { useState } from 'react'
 import CustomAlert from './CustomAlert';
 
-import cam from '../assets/logEC.png'
+import cam from '../assets/IconDog2.png'
 
 const auth=getAuth(app)
 
@@ -36,9 +36,9 @@ export default function Login(props) {
   return (
     
         <View style={styles.container}>
-            <ImageBackground source={require('../assets/alimentoC.jpg')} resizeMode={'cover'} style={styles.image1}>
-            <View style={{justifyContent:'center',alignItems:'center',}}>
-                <Image source={require('../assets/logEC.png')} style={styles.profilePictures}></Image>
+            <ImageBackground source={require('../assets/Ladicita.png')}  style={styles.image1}>
+            <View style={{justifyContent:'center',alignItems:'center'}}>
+                <Image source={require('../assets/IconDog2.png')} style={styles.profilePictures}></Image>
             </View>
             <View style={styles.card} >
                 <View style={styles.boxText}>
@@ -58,7 +58,7 @@ export default function Login(props) {
             </ImageBackground>
             {showWelcomeAlert && ( // Mostrar la alerta si showWelcomeAlert es true
         <CustomAlert
-        title="¡Bienvenido a EggScan!"
+        title="¡Bienvenido a Dog Trainer!"
         message="Iniciando sesión..."
         onClose={() => setShowWelcomeAlert(false)}
         logo={cam}

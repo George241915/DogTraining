@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { View, TextInput, Button, Text,TouchableOpacity  } from 'react-native';
+import { View, TextInput, Button, Text,TouchableOpacity , Image } from 'react-native';
 import fetchChatGPTResponse from '../components/apiGPT';
 import styles from '../styles/styleChat';
+
+import cam from '../assets/IconDog2.png'
 
 
 const ChatScreen = ({navigation}) => {
@@ -9,7 +11,7 @@ const ChatScreen = ({navigation}) => {
   const [outputMessage, setOutputMessage] = useState('');
 
   const handleSendMessage = async () => {
-    const response = await fetchChatGPTResponse('Eres experto en el cuidado de las codornices y sabes de codornices y si te preguntan de otro tema debes decir yo Lo siento, fui entrenado para hablar solo de codornices y cosas relacionadas a las mismas.' + '\n' + message);
+    const response = await fetchChatGPTResponse('Eres un experto entrenador de perros y sabes sobre perros y si te preguntan de otro tema debes decir: Lo siento, fui entrenado para hablar solo de perros y cosas relacionadas a los mismos.' + '\n' + message);
     setOutputMessage(response);
   };
   useEffect(() => {
@@ -23,6 +25,18 @@ const ChatScreen = ({navigation}) => {
 
   return (
     <View style={styles.container}> 
+    <View>
+    <Text style={styles.welcomeText}></Text>
+      <View style={{alignItems: 'center'}}>
+      <Image
+          source={cam}
+          style={{width: 150,
+            height: 150,
+            tintColor: '#434FDB',
+            resizeMode: "center"}}
+        />
+      </View>
+    </View>
       <View >
         <TextInput
         style={styles.input}
@@ -32,7 +46,7 @@ const ChatScreen = ({navigation}) => {
           textAlign='center'
         />
       </View>
-      <View style={{alignContent:'center', alignItems: 'center',}}>
+      <View style={{alignContent:'center', alignItems: 'center', paddingBottom: 10}}>
         <TouchableOpacity style={styles.button} onPress={handleSendMessage}>
               <Text style={styles.buttonText}>
                 Enviar

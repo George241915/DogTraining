@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
     },
     input: {
       borderWidth: 1,
-      borderColor: 'purple',
+      borderColor: '#434FDB',
       alignContent:'center',
       padding: 10,
       borderRadius: 10,
@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
       height:80,
   },
   button: {
-    backgroundColor: 'purple',
+    backgroundColor: '#434FDB',
     padding: 15,
     borderRadius: 15,
     width:'50%',

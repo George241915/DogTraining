@@ -9,7 +9,7 @@ export default function Inicio({navigation}) {
 
    
   return (
-    <ImageBackground source={require('../assets/fondo.jpg')} resizeMode={'cover'} style={stylesInicio.image}>
+    <ImageBackground source={require('../assets/principal.png')} resizeMode={'cover'} style={stylesInicio.image}>
         
         <View style={stylesInicio.button}>
             <TouchableOpacity style={stylesInicio.boxButton} onPress={()=>navigation.navigate('Login')}>

@@ -3,7 +3,7 @@ import { View, Text, Image, TouchableOpacity } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 
 //import camicon
-import cam from '../assets/logEC.png'
+import cam from '../assets/IconDog2.png'
 import styles from '../styles/stylePrincipal';
 
 
@@ -34,7 +34,7 @@ export default function Bienvenido({navigation}) {
       
       </TouchableOpacity>
       <Text style={{fontSize: 20,textAlign:'center',paddingTop: 20}}>
-        ¿Quieres aprender más sobre codornices?
+        ¿Quieres aprender más sobre perros?
       </Text>
       <TouchableOpacity  onPress={handleCameraPress}>
       <Text  onPress={handleRecommendationsPress} style={{

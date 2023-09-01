@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
         marginTop: 5,
         fontSize: 25,
         fontWeight: "bold",
-        color: 'purple',
+        color: '#434FDB',
         width:250,
         textAlign:'center'
     },

@@ -7,7 +7,7 @@ import { FontAwesome5 } from '@expo/vector-icons';
 import { Alert, Image, Text, TouchableOpacity, View } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 
-import cam from '../assets/logEC.png'
+import cam from '../assets/IconDog2.png'
 
 
 const Stack=createNativeStackNavigator()
@@ -38,12 +38,12 @@ export default function Welcome(props) {
   };
 
   const HeaderTitle = () => (
-    <View style={{ flexDirection: 'row', alignItems: 'center' }} >
+    <View style={{ flexDirection: 'row', alignItems: 'center'}} >
       <Image
         source={cam} // Ruta de tu imagen de logo
-        style={{ width: 30, height: 30, marginRight: 10 , tintColor:'purple'}}
+        style={{ width: 30, height: 30, marginRight: 10 , tintColor:'#0123E1', resizeMode: 'center'}}
       />
-      <Text style={{ fontSize: 18, fontWeight: 'bold', color: 'purple'}}  onPress={()=>navigation.navigate('Inicio')}>EggScan</Text>
+      <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#0123E1'}}  onPress={()=>navigation.navigate('Inicio')}>DogTrainer</Text>
     </View>
   );
 
@@ -52,17 +52,18 @@ export default function Welcome(props) {
       headerTitleAlign: 'center',
       headerRight: () => (
         <TouchableOpacity onPress={() => navigation.navigate('HomeUser')}>
-          <FontAwesome5 name="user" size={20} color={'purple'}></FontAwesome5>
+          <FontAwesome5 name="user" size={20} color={'#0123E1'}></FontAwesome5>
         </TouchableOpacity>
       ),
       headerLeft: () => (
         <TouchableOpacity onPress={handleSignOut}>
-          <FontAwesome5 name="sign-out-alt" size={20} color={'purple'}></FontAwesome5>
+          <FontAwesome5 name="sign-out-alt" size={20} color={'#0123E1'}></FontAwesome5>
         </TouchableOpacity>
       ),
       headerTitle: () => <HeaderTitle />,
-      headerTintColor: 'purple',
+      headerTintColor: '#0123E1',
       headerBackVisible: false,
+      headerStyle: {backgroundColor: '#969FFF'}
     }
   )}>
         <Stack.Screen name='Principio' component={Inicio} options={{headerShown: false}}/>

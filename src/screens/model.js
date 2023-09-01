@@ -9,18 +9,22 @@ import * as FileSystem from 'expo-file-system';
 import { Ionicons } from '@expo/vector-icons';
 
 const CLASS_COLORS = {
-  huevos_buenos: {
-    border: 'rgb(96, 153, 99)',
-    fill: 'rgba(96, 153, 99, 0.5)'
+  sitting: {
+    border: 'rgb(58, 216, 106)',
+    fill: 'rgba(58, 216, 106, 0.5)'
   },
-  huevos_malos: {
-    border: 'rgb(249, 146, 82)',
-    fill: 'rgba(249, 146, 82, 0.5)'
+  lying: {
+    border: 'rgb(255, 103, 0)',
+    fill: 'rgba(255, 103, 0, 0.5)'
   },
+  standing: {
+    border: 'rgb(245, 0, 183)',
+    fill: 'rgba(245, 0, 183, 0.5)'
+  }
   
 }
 
-const URL = 'https://inf-826adb7f-c53f-484e-9924-2b8e0b78cfea-no4xvrhsfq-uc.a.run.app/detect'; // copy and paste your Theos deployment URL here
+const URL = 'https://inf-7add3120-788f-44ba-a66b-6576397d3514-no4xvrhsfq-uc.a.run.app/detect'; // copy and paste your Theos deployment URL here
 const FALLBACK_URL = '';
 
 function sleep(seconds) {
@@ -60,7 +64,7 @@ export default function Model({navigation}) {
   const [detecting, setDetecting] = useState(false);
   const [detected, setDetected] = useState(false);
   const [detections, setDetections] = useState([]);
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState('');
   const cameraRef = useRef(null);
 
   useEffect(() => {
@@ -116,22 +120,22 @@ export default function Model({navigation}) {
           name: 'image.jpg'
         };
         setDetections([]);
-        setAmount(0);
+        setAmount('');
         setDetecting(true);
         setDetected(false);
         const detectedCash = await detect(imageFile);
         setDetecting(false);
         setDetected(true);
         setDetections(detectedCash);
-        let detectedAmout = 0;
-        let detectHuevoBueno=0;
+        let detectedAmout = '';
+        let detectPose='';
         
         detectedCash.forEach((detection) => {
-            if (detection.class == 'huevos_buenos'){
-              detectHuevoBueno= 1
+            if (detection.class == 'sitting' || detection.class == 'lying' || detection.class == 'standing'){
+              detectPose= 'Felicidades'
             }
     
-            detectedAmout += detectHuevoBueno;   
+            detectedAmout = detectPose;   
             
         });
         setAmount(detectedAmout);
@@ -146,7 +150,7 @@ export default function Model({navigation}) {
     setDetections([]);
     setDetecting(false);
     setDetected(false);
-    setAmount(0);
+    setAmount('');
     FileSystem.deleteAsync(image);
   }
 
@@ -270,9 +274,9 @@ export default function Model({navigation}) {
             >   
             </Button>
           }
-          <Button disabled={detected} title='Count' onPress={takePicture} icon='color-wand' />
+          <Button disabled={detected} title='sit' onPress={takePicture} icon='color-wand' />
         </View>
-        <Text style={styles.predictionText}>HB-{amount}</Text>
+        <Text style={styles.predictionText}>{amount}</Text>
       </View>
     </View>
   );

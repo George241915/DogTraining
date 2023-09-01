@@ -23,7 +23,7 @@ const styles=StyleSheet.create({
         },
         card:{
             margin:20,
-            backgroundColor:'#ffff',
+            backgroundColor:'transparent',
             borderRadius:20,
             width:'90%',
             padding:20,
@@ -33,21 +33,22 @@ const styles=StyleSheet.create({
                 height:2
             },
             shadowOpacity:0.25,
-            shadowRadius:4,
-            elevation:5
+            shadowRadius:1,
+
         },
         profilePictures:{
             width:200,
             height:200,
             borderRadius:50,
             borderColor:'#ffff',
-            tintColor: 'purple',
+            tintColor: '#434FDB',
             marginVertical:30,
+            resizeMode: 'center'
             
         },
         boxText:{
             paddingVertical:20,
-            backgroundColor:'#cccccc40',
+            backgroundColor:'#cccccc',
             borderRadius:30,
             marginVertical:10,
             textAlign: 'center'           
@@ -56,16 +57,13 @@ const styles=StyleSheet.create({
             
             alignItems:'center',
             
-            
-            
         },
         boxButton:{
-            backgroundColor:'purple',
+            backgroundColor:'#434FDB',
             borderRadius:30,
             paddingVertical:20,
             width:150,
-            marginTop:20,
-            
+            marginTop:20,         
             
         },
         TextButton:{

@@ -3,6 +3,7 @@ const styles = StyleSheet.create({
     container: {
       flex: 1,
       alignItems: 'center',
+      backgroundColor: '#ffff'
     },
     welcomeText: {
         fontSize: 24,
@@ -14,7 +15,8 @@ const styles = StyleSheet.create({
       width: 150,
       height: 150,
       marginBottom: 20,
-      tintColor: 'purple',
+      tintColor: '#434FDB',
+      resizeMode: "center"
       
     },
     button: {

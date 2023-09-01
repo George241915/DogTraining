@@ -10,7 +10,9 @@ const stylesInicio=StyleSheet.create({
 
     image:{
         flex:1,
+        height:'95%',
         resizeMode:'cover',
+        top: 40
         
     },
     button:{
@@ -19,11 +21,11 @@ const stylesInicio=StyleSheet.create({
         
     },
     boxButton:{
-        backgroundColor:'purple',
+        backgroundColor:'#434FDB',
         borderRadius:30,
         paddingVertical:15,
         width:200,
-        marginTop:690
+        marginTop:400
     },
     TextButton:{
         textAlign:'center',
