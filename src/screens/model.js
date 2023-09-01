@@ -7,6 +7,7 @@ import axios from 'axios';
 import Canvas from 'react-native-canvas';
 import * as FileSystem from 'expo-file-system';
 import { Ionicons } from '@expo/vector-icons';
+import { Audio } from 'expo-av';
 
 const CLASS_COLORS = {
   sitting: {
@@ -66,12 +67,16 @@ export default function Model({navigation}) {
   const [detections, setDetections] = useState([]);
   const [amount, setAmount] = useState('');
   const cameraRef = useRef(null);
+  const [currentSound, setCurrentSound] = useState('');
+
+
 
   useEffect(() => {
     (async () => {
       MediaLibrary.requestPermissionsAsync();
       const cameraStatus = await Camera.requestCameraPermissionsAsync();
       setHasCameraPermission(cameraStatus.status === 'granted');
+      setCurrentSound('')
     })();
   }, []);
 
@@ -91,6 +96,47 @@ export default function Model({navigation}) {
     }
   }, [navigation]);
  
+  const playOrder = async () => {
+    try {
+      const soundFiles = [
+        require('../assets/audios/sit.mp3'),
+        require('../assets/audios/lying.mp3'),
+        require('../assets/audios/stand.mp3'),
+      ];
+  
+      const randomIndex = Math.floor(Math.random() * soundFiles.length);
+      const { sound } = await Audio.Sound.createAsync(soundFiles[randomIndex]);
+      
+      const selectedSound = soundFiles[randomIndex];
+      setCurrentSound(selectedSound);
+      await sound.playAsync();
+    } catch (error) {
+      console.error('Error al reproducir el sonido:', error);
+    }
+  };
+ 
+console.log(currentSound)
+  const playSound = async () => {
+    try {
+      const { sound } = await Audio.Sound.createAsync(
+        require('../assets/audios/atencion.mp3')
+      );
+      await sound.playAsync();
+    } catch (error) {
+      console.error('Error al reproducir el sonido:', error);
+    }
+  };
+
+  const playCongrat = async () => {
+    try {
+      const { sound } = await Audio.Sound.createAsync(
+        require('../assets/audios/congratulation.mp3')
+      );
+      await sound.playAsync();
+    } catch (error) {
+      console.error('Error al reproducir el sonido:', error);
+    }
+  };
 
   useEffect(() => {
     if (image) {
@@ -131,10 +177,18 @@ export default function Model({navigation}) {
         let detectPose='';
         
         detectedCash.forEach((detection) => {
-            if (detection.class == 'sitting' || detection.class == 'lying' || detection.class == 'standing'){
+            if (detection.class == 'sitting' && currentSound == '31'  ){
               detectPose= 'Felicidades'
+              playCongrat();
+            }else if(detection.class == 'lying' && currentSound == '32'){
+              detectPose= 'Felicidades'
+              playCongrat();
+            }else if (detection.class == 'standing' && currentSound == '33'){
+              detectPose= 'Felicidades'
+              playCongrat();
+            }else{
+              detectPose= 'Fallaste'
             }
-    
             detectedAmout = detectPose;   
             
         });
@@ -258,14 +312,14 @@ export default function Model({navigation}) {
           }}
         >
           {image ? <Button
-            title='Retake'
+            title='|'
+            color={'transparent'}
             onPress={retake}
-            icon='ios-reload'
           />
             :
             <Button
-              title='REVERS'
-              icon=''
+              title='|'
+              color={'transparent'}
               onPress={() => {
                 setType(
                   type === CameraType.back ? CameraType.front : CameraType.back
@@ -274,7 +328,9 @@ export default function Model({navigation}) {
             >   
             </Button>
           }
-          <Button disabled={detected} title='sit' onPress={takePicture} icon='color-wand' />
+          <Button title='|' onPress={takePicture} color={'transparent'} />
+          <Button title='|' onPress={playSound} color={'transparent'}/>
+          <Button title='|' onPress={playOrder} color={'transparent'}/>
         </View>
         <Text style={styles.predictionText}>{amount}</Text>
       </View>
