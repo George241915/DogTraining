@@ -10,22 +10,26 @@ import { Ionicons } from '@expo/vector-icons';
 import { Audio } from 'expo-av';
 
 const CLASS_COLORS = {
-  sitting: {
+  sentado: {
     border: 'rgb(58, 216, 106)',
     fill: 'rgba(58, 216, 106, 0.5)'
   },
-  lying: {
+  acostado: {
     border: 'rgb(255, 103, 0)',
     fill: 'rgba(255, 103, 0, 0.5)'
   },
-  standing: {
+  quieto: {
     border: 'rgb(245, 0, 183)',
     fill: 'rgba(245, 0, 183, 0.5)'
+  },
+   saludo: {
+    border: 'rgb(0, 170, 228)',
+    fill: 'rgba(0, 170, 228, 0.5)'
   }
   
 }
 
-const URL = 'https://inf-7add3120-788f-44ba-a66b-6576397d3514-no4xvrhsfq-uc.a.run.app/detect'; // copy and paste your Theos deployment URL here
+const URL = 'https://inf-d0270939-aa3c-4e5d-b0ed-2f8b03ff4851-no4xvrhsfq-uc.a.run.app/detect'; // copy and paste your Theos deployment URL here
 const FALLBACK_URL = '';
 
 function sleep(seconds) {
@@ -102,6 +106,7 @@ export default function Model({navigation}) {
         require('../assets/audios/sit.mp3'),
         require('../assets/audios/lying.mp3'),
         require('../assets/audios/stand.mp3'),
+        require('../assets/audios/saludo.mp3'),
       ];
   
       const randomIndex = Math.floor(Math.random() * soundFiles.length);
@@ -173,26 +178,32 @@ console.log(currentSound)
         setDetecting(false);
         setDetected(true);
         setDetections(detectedCash);
-        let detectedAmout = '';
+        let detectedAmout = 'Intentando Nuevamente...';
         let detectPose='';
-        
-        detectedCash.forEach((detection) => {
-            if (detection.class == 'sitting' && currentSound == '31'  ){
+          detectedCash.forEach((detection) => {
+            if (detection.class == 'sentado' && currentSound == '31'  ){
               detectPose= 'Felicidades'
               playCongrat();
-            }else if(detection.class == 'lying' && currentSound == '32'){
+            }else if(detection.class == 'acostado' && currentSound == '32'){
               detectPose= 'Felicidades'
               playCongrat();
-            }else if (detection.class == 'standing' && currentSound == '33'){
+            }else if (detection.class == 'quieto' && currentSound == '33'){
+              detectPose= 'Felicidades'
+              playCongrat();
+            }else if (detection.class == 'saludo' && currentSound == '34'){
               detectPose= 'Felicidades'
               playCongrat();
             }else{
               detectPose= 'Fallaste'
             }
-            detectedAmout = detectPose;   
-            
-        });
+            detectedAmout = detectPose;     
+        });        
         setAmount(detectedAmout);
+        if (detectedAmout=='Intentando Nuevamente...'){
+          setTimeout(() => {
+            retake();
+          }, 1500);
+        }
       } catch (error) {
         console.log(error);
       }
