@@ -29,14 +29,14 @@ const CLASS_COLORS = {
   
 }
 
-const URL = 'https://inf-d0270939-aa3c-4e5d-b0ed-2f8b03ff4851-no4xvrhsfq-uc.a.run.app/detect'; // copy and paste your Theos deployment URL here
+const URL = 'https://inf-d0270939-aa3c-4e5d-b0ed-2f8b03ff4851-no4xvrhsfq-uc.a.run.app/detect'; 
 const FALLBACK_URL = '';
 
 function sleep(seconds) {
   return new Promise((resolve) => setTimeout(resolve, seconds * 1000));
 }
 
-async function detect(imageFile, url=URL, confThres=0.30, iouThres=0.45, retries=10, delay=0) {
+async function detect(imageFile, url=URL, confThres=0.40, iouThres=0.45, retries=3, delay=0) {
   const data = new FormData();
   data.append('image', imageFile);
   data.append('conf_thres', confThres);
@@ -184,13 +184,13 @@ console.log(currentSound)
             if (detection.class == 'sentado' && currentSound == '31'  ){
               detectPose= 'Felicidades'
               playCongrat();
-            }else if(detection.class == 'acostado' && currentSound == '32'){
+            }else if(detection.class == 'acostado' && currentSound == '33'){
               detectPose= 'Felicidades'
               playCongrat();
-            }else if (detection.class == 'quieto' && currentSound == '33'){
+            }else if (detection.class == 'quieto' && currentSound == '34'){
               detectPose= 'Felicidades'
               playCongrat();
-            }else if (detection.class == 'saludo' && currentSound == '34'){
+            }else if (detection.class == 'saludo' && currentSound == '35'){
               detectPose= 'Felicidades'
               playCongrat();
             }else{
